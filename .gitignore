@@ -8,3 +8,6 @@
 /solr/pages/pages/*
 /solr/pages/*_Pages/*
 /solr/solr.xml
+/solr-webapp
+/solr.pid
+/etc/solr.conf

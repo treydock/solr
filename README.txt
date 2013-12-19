@@ -21,35 +21,22 @@ that meet the needs of collex.
 After downloading, copy the file solr/solr.example.xml to solr/solr.xml.
 Customize etc/logging.properties to suit your needs.
 
-Solr should be run as a service on your target host. On linux-based hosts, add a
-solr file with contents similar to the snippet below to the /etc/init.d directory:
+Solr should be run as a service on your target host.
 
-SOLR_DIR="/home/arc/www/solr"
-JAVA_OPTIONS="-Xmx14144m -DSTOP.PORT=8079 -DSTOP.KEY=mustard -Djava.util.logging.config.file=etc/logging.properties -jar start.jar"
-JAVA="/usr/bin/java"
+These are the steps for RedHat based hosts:
 
-case $1 in
-    start)
-        echo "Starting Solr"
-        cd $SOLR_DIR
-        $JAVA $JAVA_OPTIONS 2>$SOLR_DIR/logs/error.log 1>&2 &
-        ;;
-    stop)
-        echo "Stopping Solr"
-        cd $SOLR_DIR
-        $JAVA $JAVA_OPTIONS --stop
-        ;;
-    restart)
-        $0 stop
-        sleep 1
-        $0 start
-        ;;
-    *)
-        echo "Usage: $0 {start|stop|restart}" >&2
-        exit 1
-        ;;
-esac
+1. Copy etc/solr.conf.example to etc/solr.conf and customize to suit your needs
+2. Copy or symlink the startup script configuration file to /etc/solr.conf
 
+        ln -snf $(pwd)/etc/solr.conf /etc/solr.conf
+
+3. Copy solr.initd to /etc/init.d/solr and ensure it is executable
+
+        install -o root -g root -m 0755 solr.initd /etc/init.d/solr
+
+4. Set solr to run at startup
+
+        chkconfig solr on
 
 
 Solr example

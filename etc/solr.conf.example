@@ -1,0 +1,38 @@
+#-----------------------------------------------------
+# solr-initd v0.5.1
+#-----------------------------------------------------
+# Configuration for solr.init. Copy this to:
+#
+# /etc/solr.conf
+#
+# NOTE: if you are installing this somewhere else then
+# you need to alter solr.start and solr.initd. 
+#
+#-----------------------------------------------------
+# Author: Jeff Busby <jeff@jeffbusby.ca>
+# License: http://creativecommons.org/licenses/by/3.0/
+#-----------------------------------------------------
+
+# Directory where solr is installed
+SOLR_HOME=/home/arc/www/solr
+
+# Path to solr start script 
+SOLR_START=$SOLR_HOME/solr.start
+
+# Java options for Solr
+OPTIONS="-Xmx14144m -DSTOP.PORT=8079 -DSTOP.KEY=mustard -Djava.util.logging.config.file=etc/logging.properties"
+
+# Path to pid file
+PIDFILE=$SOLR_HOME/solr.pid
+
+# Path to log file
+LOG_FILE=$SOLR_HOME/logs/solr.log
+
+# Service name
+NAME="Solr"
+
+# Service description
+DESC="start/stop Solr Server"
+
+# User to run the service
+USER="arc"
