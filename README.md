@@ -1,20 +1,5 @@
-# Licensed to the Apache Software Foundation (ASF) under one or more
-# contributor license agreements.  See the NOTICE file distributed with
-# this work for additional information regarding copyright ownership.
-# The ASF licenses this file to You under the Apache License, Version 2.0
-# (the "License"); you may not use this file except in compliance with
-# the License.  You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Collex Solr Component 
 
-Collex Solr Component 
----------------------
 This is the solr component used by collex. It has customized configrations 
 that meet the needs of collex.
 
@@ -39,40 +24,37 @@ These are the steps for RedHat based hosts:
         chkconfig solr on
 
 
-Solr example
-------------
+## Solr example
 
 This directory contains an instance of the Jetty Servlet container setup to 
 run Solr using an example configuration.
 
 To run this example:
 
-  java -jar start.jar
+    java -jar start.jar
 
 in this example directory, and when Solr is started connect to 
 
-  http://localhost:8983/solr/
+    http://localhost:8983/solr/
 
 To add documents to the index, use the post.jar (or post.sh script) in
 the example/exampledocs subdirectory (while Solr is running), for example:
 
      cd exampledocs
      java -jar post.jar *.xml
-Or:  sh post.sh *.xml
+Or:
+
+    sh post.sh *.xml
 
 For more information about this example please read...
 
- * example/solr/README.txt
-   For more information about the "Solr Home" and Solr specific configuration
- * http://lucene.apache.org/solr/tutorial.html
-   For a Tutorial using this example configuration
- * http://wiki.apache.org/solr/SolrResources 
-   For a list of other tutorials and introductory articles.
+* example/solr/README.txt - For more information about the "Solr Home" and Solr specific configuration
+* http://lucene.apache.org/solr/tutorial.html - For a Tutorial using this example configuration
+* http://wiki.apache.org/solr/SolrResources - For a list of other tutorials and introductory articles.
 
-Notes About These Examples
---------------------------
+## Notes About These Examples
 
-* SolrHome *
+### SolrHome
 
 By default, start.jar starts Solr in Jetty using the default Solr Home
 directory of "./solr/" (relative to the working directory of hte servlet 
@@ -82,7 +64,7 @@ solr.solr.home system property when starting jetty...
   java -Dsolr.solr.home=multicore -jar start.jar
   java -Dsolr.solr.home=example-DIH/solr -jar start.jar
 
-* References to Jar Files Outside This Directory *
+### References to Jar Files Outside This Directory
 
 Various example SolrHome dirs contained in this directory may use "<lib>"
 statements in the solrconfig.xml file to reference plugin jars outside of 
@@ -94,15 +76,31 @@ clustering component, or any other modules in "contrib", you will need to
 copy the required jars or update the paths to those jars in your 
 solrconfig.xml.
 
-* Logging *
+### Logging
 
 By default, Jetty & Solr will log to the console. This can be convenient when 
 first getting started, but eventually you will want to log to a file. To 
 configure logging, you can just pass a system property to Jetty on startup:
 
-  java -Djava.util.logging.config.file=etc/logging.properties -jar start.jar
+    java -Djava.util.logging.config.file=etc/logging.properties -jar start.jar
  
 This will use Java Util Logging to log to a file based on the config in
 etc/logging.properties. Logs will be written in the logs directory. It is
 also possible to setup log4j or other popular logging frameworks.
 
+## License
+
+> Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+> <http://www.apache.org/licenses/LICENSE-2.0>
+
+> Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
